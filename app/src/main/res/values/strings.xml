@@ -1,0 +1,120 @@
+<resources>
+    <string name="app_name">Registro de Degustação de Cerveja</string>
+    <string name="nome">Nome da Cerveja</string>
+    <string name="estilo">Estilo</string>
+    <string name="ibu">IBU</string>
+    <string name="abv">ABV</string>
+    <string name="consideracoes">Considerações</string>
+    <string name="nacionalidade_cerveja">Nacionalidade da Cerveja</string>
+    <string name="nacional">Brasil</string>
+    <string name="importada">Outros</string>
+    <string name="recomendacao">Recomendo esta cerveja</string>
+    <string name="classificacao">Classificação</string>
+    <string name="limpar">Limpar</string>
+    <string name="salvar">Salvar</string>
+
+    <integer-array name= "classificacao_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </integer-array>
+
+    <string-array name="cervejas_nome">
+        <item>Kaiser</item>
+        <item>Brahma</item>
+        <item>Antartica</item>
+        <item>Budweiser</item>
+        <item>Heineken</item>
+        <item>Patagônia</item>
+        <item>Paulaner</item>
+        <item>Erdinger</item>
+        <item>Duvel</item>
+        <item>Schornstein</item>
+    </string-array>
+    
+    <integer-array name="cervejas_ibu">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+    </integer-array>
+
+    <integer-array name="cervejas_abv">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </integer-array>
+
+    <integer-array name="cervejas_recomendacao">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+
+    <string-array name="cervejas_estilo">
+        <item>Pilsen</item>
+        <item>Lager</item>
+        <item>Bock</item>
+        <item>Weiss</item>
+        <item>IPA</item>
+        <item>Session IPA</item>
+        <item>Pale Ale</item>
+        <item>Red Ale</item>
+        <item>Dunkel</item>
+        <item>Souer</item>
+    </string-array>
+
+    <string-array name="cervejas_nacionalidade">
+        <item>Outros</item>
+        <item>Brasil</item>
+        <item>Outros</item>
+        <item>Brasil</item>
+        <item>Outros</item>
+        <item>Brasil</item>
+        <item>Outros</item>
+        <item>Brasil</item>
+        <item>Outros</item>
+        <item>Brasil</item>
+    </string-array>
+
+    <string-array name="cervejas_consideracoes">
+        <item>Boa</item>
+        <item>Ruim</item>
+        <item>Boa</item>
+        <item>Ruim</item>
+        <item>Boa</item>
+        <item>Ruim</item>
+        <item>Boa</item>
+        <item>Ruim</item>
+        <item>Boa</item>
+        <item>Ruim</item>
+    </string-array>
+
+</resources>
