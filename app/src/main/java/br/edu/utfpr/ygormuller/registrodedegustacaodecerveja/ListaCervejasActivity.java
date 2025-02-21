@@ -54,16 +54,19 @@ public class ListaCervejasActivity extends AppCompatActivity {
             boolean recomendacao = (recomendacoes[i] == 1); // Usa o array "recomendacoes"
             int classificacao = Integer.parseInt(classificacoes[i].replaceAll("[^0-9]", ""));
 
-            listaCervejas.add(new Cerveja(
-                    nomes[i],
-                    estilos[i],
-                    ibus[i],
-                    abvs[i],
-                    recomendacao,
-                    nacionalidades[i],
-                    consideracoes[i],
-                    classificacao
-            ));
+            if (nomes[i] != null && estilos[i] != null && nacionalidades[i] != null && consideracoes[i] != null) {
+
+                listaCervejas.add(new Cerveja(
+                        nomes[i],
+                        estilos[i],
+                        ibus[i],
+                        abvs[i],
+                        recomendacao,
+                        nacionalidades[i],
+                        consideracoes[i],
+                        classificacao
+                ));
+            }
         }
     }
 }

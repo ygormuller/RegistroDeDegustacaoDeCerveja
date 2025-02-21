@@ -1,5 +1,6 @@
 package br.edu.utfpr.ygormuller.registrodedegustacaodecerveja;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -67,6 +68,11 @@ public class MainActivity extends AppCompatActivity {
         spinnerClassificacao.setSelection(0);
 
         Toast.makeText(this, "Formulário limpo com sucesso!", Toast.LENGTH_SHORT).show();
+
+        findViewById(R.id.buttonSobre).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, SobreActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void salvarFormulario() {
@@ -85,7 +91,13 @@ public class MainActivity extends AppCompatActivity {
 
         String classificacao = spinnerClassificacao.getSelectedItem().toString();
 
-        if (nome.isEmpty() || estilo.isEmpty() || ibu.isEmpty() || abv.isEmpty() || consideracoes.isEmpty() || nacionalidadeCerveja.isEmpty()) {
+        if (editTextNome.getText().toString().isEmpty() ||
+                editTextEstilo.getText().toString().isEmpty() ||
+                editTextIbu.getText().toString().isEmpty() ||
+                editTextAbv.getText().toString().isEmpty() ||
+                editTextConsideracoes.getText().toString().isEmpty() ||
+                radioGroupNacionalidade.getCheckedRadioButtonId() == -1) {
+
             Toast.makeText(this, "Preencha todos os campos obrigatórios!", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -102,4 +114,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
     }
+
+
 }

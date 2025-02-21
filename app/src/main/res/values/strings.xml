@@ -13,18 +13,13 @@
     <string name="limpar">Limpar</string>
     <string name="salvar">Salvar</string>
 
-    <integer-array name= "classificacao_array">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-    </integer-array>
+    <string-array name="classificacao_array">
+        <item>1 Estrela</item>
+        <item>2 Estrelas</item>
+        <item>3 Estrelas</item>
+        <item>4 Estrelas</item>
+        <item>5 Estrelas</item>
+    </string-array>
 
     <string-array name="cervejas_nome">
         <item>Kaiser</item>
@@ -38,7 +33,7 @@
         <item>Duvel</item>
         <item>Schornstein</item>
     </string-array>
-    
+
     <integer-array name="cervejas_ibu">
         <item>5</item>
         <item>10</item>
@@ -116,5 +111,8 @@
         <item>Boa</item>
         <item>Ruim</item>
     </string-array>
+
+    <string name="logo_utfpr_descricao">Logo da UTFPR</string>
+    <string name="sobre">Sobre</string>
 
 </resources>
