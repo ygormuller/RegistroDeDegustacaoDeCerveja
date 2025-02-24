@@ -10,7 +10,6 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <!-- Logo da UTFPR -->
         <ImageView
             android:id="@+id/imageViewLogo"
             android:layout_width="150dp"
@@ -18,7 +17,6 @@
             android:src="@drawable/logo_utfpr"
         android:contentDescription="@string/logo_utfpr_descricao" />
 
-        <!-- Nome da UTFPR -->
         <TextView
             android:id="@+id/textViewNomeUTFPR"
             android:layout_width="wrap_content"
@@ -42,7 +40,7 @@
             android:id="@+id/textViewCurso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Curso: Android"
+            android:text="Curso: Java Android"
             android:textSize="16sp"
             android:layout_marginTop="8dp" />
 

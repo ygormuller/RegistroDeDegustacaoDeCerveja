@@ -19,19 +19,24 @@
         <item>3 Estrelas</item>
         <item>4 Estrelas</item>
         <item>5 Estrelas</item>
+        <item>6 Estrelas</item>
+        <item>7 Estrelas</item>
+        <item>8 Estrelas</item>
+        <item>9 Estrelas</item>
+        <item>10 Estrelas</item>
     </string-array>
 
     <string-array name="cervejas_nome">
-        <item>Kaiser</item>
-        <item>Brahma</item>
-        <item>Antartica</item>
-        <item>Budweiser</item>
-        <item>Heineken</item>
-        <item>Patagônia</item>
-        <item>Paulaner</item>
-        <item>Erdinger</item>
-        <item>Duvel</item>
-        <item>Schornstein</item>
+<!--        <item>Kaiser</item>-->
+<!--        <item>Brahma</item>-->
+<!--        <item>Antartica</item>-->
+<!--        <item>Budweiser</item>-->
+<!--        <item>Heineken</item>-->
+<!--        <item>Patagônia</item>-->
+<!--        <item>Paulaner</item>-->
+<!--        <item>Erdinger</item>-->
+<!--        <item>Duvel</item>-->
+<!--        <item>Schornstein</item>-->
     </string-array>
 
     <integer-array name="cervejas_ibu">

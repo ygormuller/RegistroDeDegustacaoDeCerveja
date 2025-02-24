@@ -66,8 +66,8 @@ public class CervejaAdapter extends BaseAdapter {
 
         holder.textViewNome.setText(cerveja.getNome());
         holder.textViewEstilo.setText("Estilo: " + cerveja.getEstilo());
-        holder.textViewIbu.setText("IBU: " + cerveja.getIBU());
-        holder.textViewAbv.setText("ABV: " + cerveja.getABV() + "%");
+        holder.textViewIbu.setText("IBU: " + cerveja.getIbu());
+        holder.textViewAbv.setText("ABV: " + cerveja.getAbv() + "%");
         holder.textViewRecomendacao.setText("Recomendação: " + (cerveja.isRecomendacao() ? "Sim" : "Não"));
 
         return convertView;
