@@ -48,7 +48,7 @@
             android:id="@+id/textViewEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="E-mail: ygormuller@alunos.utfpr.edu.br"
+            android:text="@string/e_mail_ygormuller_alunos_utfpr_edu_br"
             android:textSize="16sp"
             android:layout_marginTop="8dp" />
 
@@ -57,7 +57,7 @@
             android:id="@+id/textViewDescricao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descrição: Cadastra e classifica cervejas degustadas de acordo com o usuário."
+            android:text="@string/descri_o_cadastra_e_classifica_cervejas_degustadas_de_acordo_com_o_usu_rio"
             android:textSize="16sp"
             android:layout_marginTop="16dp"
             android:padding="8dp"

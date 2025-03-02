@@ -123,5 +123,9 @@
     <string name="universidade_tecnol_gica_federal_do_paran">Universidade Tecnológica Federal do Paraná</string>
     <string name="nome_do_aluno_ygor_muller">Nome do Aluno: Ygor Muller</string>
     <string name="curso_desenvolvimento_java_para_dispositivos_m_veis">Curso: Desenvolvimento JAVA para dispositivos móveis</string>
+    <string name="editar">Editar</string>
+    <string name="excluir">Excluir</string>
+    <string name="e_mail_ygormuller_alunos_utfpr_edu_br">E-mail: ygormuller@alunos.utfpr.edu.br</string>
+    <string name="descri_o_cadastra_e_classifica_cervejas_degustadas_de_acordo_com_o_usu_rio">Descrição: Cadastra e classifica cervejas degustadas de acordo com o usuário.</string>
 
 </resources>
