@@ -45,15 +45,15 @@ public class ListaCervejasActivity extends AppCompatActivity {
 //            }
 //        });
 
-        findViewById(R.id.buttonAdicionar).setOnClickListener(v -> {
-            Intent intent = new Intent(ListaCervejasActivity.this, MainActivity.class);
-            startActivityForResult(intent, 1); // Código de requisição = 1
-        });
-
-        findViewById(R.id.buttonSobre).setOnClickListener(v -> {
-            Intent intent = new Intent(ListaCervejasActivity.this, SobreActivity.class);
-            startActivity(intent);
-        });
+//        findViewById(R.id.buttonAdicionar).setOnClickListener(v -> {
+//            Intent intent = new Intent(ListaCervejasActivity.this, MainActivity.class);
+//            startActivityForResult(intent, 1); // Código de requisição = 1
+//        });
+//
+//        findViewById(R.id.buttonSobre).setOnClickListener(v -> {
+//            Intent intent = new Intent(ListaCervejasActivity.this, SobreActivity.class);
+//            startActivity(intent);
+//        });
     }
 
     private void carregarDados() {

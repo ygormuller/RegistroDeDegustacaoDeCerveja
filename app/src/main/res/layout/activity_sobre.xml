@@ -21,30 +21,29 @@
             android:id="@+id/textViewNomeUTFPR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Universidade Tecnológica Federal do Paraná"
+            android:text="@string/universidade_tecnol_gica_federal_do_paran"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginTop="16dp" />
+            android:layout_marginTop="16dp"
+            android:gravity="center"/>
 
-        <!-- Nome do Aluno -->
         <TextView
             android:id="@+id/textViewNomeAluno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nome do Aluno: Ygor Muller"
+            android:text="@string/nome_do_aluno_ygor_muller"
             android:textSize="16sp"
             android:layout_marginTop="16dp" />
 
-        <!-- Curso -->
         <TextView
             android:id="@+id/textViewCurso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Curso: Java Android"
+            android:text="@string/curso_desenvolvimento_java_para_dispositivos_m_veis"
             android:textSize="16sp"
-            android:layout_marginTop="8dp" />
+            android:layout_marginTop="8dp"
+            android:gravity="center"/>
 
-        <!-- E-mail -->
         <TextView
             android:id="@+id/textViewEmail"
             android:layout_width="wrap_content"

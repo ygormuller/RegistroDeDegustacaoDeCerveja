@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Registro de Degustação de Cerveja</string>
+    <string name="app_name">Registro de Cerveja</string>
     <string name="nome">Nome da Cerveja</string>
     <string name="estilo">Estilo</string>
     <string name="ibu">IBU</string>
@@ -118,6 +118,10 @@
     </string-array>
 
     <string name="logo_utfpr_descricao">Logo da UTFPR</string>
-    <string name="sobre">Sobre</string>
+    <string name="Sobre">Sobre</string>
+    <string name="Adicionar">Adicionar</string>
+    <string name="universidade_tecnol_gica_federal_do_paran">Universidade Tecnológica Federal do Paraná</string>
+    <string name="nome_do_aluno_ygor_muller">Nome do Aluno: Ygor Muller</string>
+    <string name="curso_desenvolvimento_java_para_dispositivos_m_veis">Curso: Desenvolvimento JAVA para dispositivos móveis</string>
 
 </resources>

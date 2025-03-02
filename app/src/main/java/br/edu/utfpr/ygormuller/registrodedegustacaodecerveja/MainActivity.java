@@ -2,6 +2,8 @@ package br.edu.utfpr.ygormuller.registrodedegustacaodecerveja;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
@@ -25,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Cadastro de Cerveja");
+        }
+
         editTextNome = findViewById(R.id.editTextTextNome);
         editTextEstilo = findViewById(R.id.editTextTextEstilo);
         editTextIbu = findViewById(R.id.editTextNumberIbu);
@@ -39,15 +46,62 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerClassificacao.setAdapter(adapter);
 
-        findViewById(R.id.buttonLimpar).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                limparFormulario();
+        Intent intent = getIntent();
+        Cerveja cervejaEditar = (Cerveja) intent.getSerializableExtra("CERVEJA_EDITAR");
+        if (cervejaEditar != null) {
+            editTextNome.setText(cervejaEditar.getNome());
+            editTextEstilo.setText(cervejaEditar.getEstilo());
+            editTextIbu.setText(String.valueOf(cervejaEditar.getIbu()));
+            editTextAbv.setText(String.valueOf(cervejaEditar.getAbv()));
+            editTextConsideracoes.setText(cervejaEditar.getConsideracoes());
+            checkBoxRecomendacao.setChecked(cervejaEditar.isRecomendacao());
+            // Configurar nacionalidade
+            for (int i = 0; i < radioGroupNacionalidade.getChildCount(); i++) {
+                RadioButton rb = (RadioButton) radioGroupNacionalidade.getChildAt(i);
+                if (rb.getText().toString().equals(cervejaEditar.getNacionalidade())) {
+                    rb.setChecked(true);
+                    break;
+                }
             }
-        });
+            // Configurar classificação
+            int pos = adapter.getPosition(cervejaEditar.getClassificacao());
+            spinnerClassificacao.setSelection(pos);
+        }
 
-        findViewById(R.id.buttonSalvar).setOnClickListener(v -> salvarFormulario());
+//        findViewById(R.id.buttonLimpar).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                limparFormulario();
+//            }
+//        });
+//
+//        findViewById(R.id.buttonSalvar).setOnClickListener(v -> salvarFormulario());
 
+    }
+
+    // Inflar o menu de opções
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    // Tratar cliques nos itens do menu
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.menu_salvar) {
+            salvarFormulario();
+            return true;
+        } else if (itemId == R.id.menu_limpar) {
+            limparFormulario();
+            return true;
+        } else if (itemId == android.R.id.home) { // Botão "Up"
+            setResult(RESULT_CANCELED); // Cancelar a operação
+            finish(); // Retornar à CervejasActivity
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void limparFormulario() {
