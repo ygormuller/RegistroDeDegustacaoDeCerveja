@@ -1,17 +1,16 @@
 <resources>
-    <string name="app_name">Registro de Cerveja</string>
-    <string name="nome">Nome da Cerveja</string>
-    <string name="estilo">Estilo</string>
+    <string name="app_name">Beer log</string>
+    <string name="nome">Beer name</string>
     <string name="ibu">IBU</string>
     <string name="abv">ABV</string>
-    <string name="consideracoes">Considerações</string>
-    <string name="nacionalidade_cerveja">Nacionalidade da Cerveja</string>
-    <string name="nacional">Brasil</string>
-    <string name="importada">Outros</string>
-    <string name="recomendacao">Recomendo esta cerveja</string>
-    <string name="classificacao">Classificação</string>
-    <string name="limpar">Limpar</string>
-    <string name="salvar">Salvar</string>
+    <string name="consideracoes">Considerations</string>
+    <string name="nacionalidade_cerveja">Beer nacionality</string>
+    <string name="nacional">Brazil</string>
+    <string name="importada">Others</string>
+    <string name="recomendacao">I recommned this beer</string>
+    <string name="classificacao">Classification</string>
+    <string name="limpar">Clean</string>
+    <string name="salvar">Save</string>
 
     <string-array name="classificacao_array">
         <item>1 Estrela</item>
@@ -117,15 +116,30 @@
         <item>Ruim</item>
     </string-array>
 
-    <string name="logo_utfpr_descricao">Logo da UTFPR</string>
-    <string name="Sobre">Sobre</string>
-    <string name="Adicionar">Adicionar</string>
-    <string name="universidade_tecnol_gica_federal_do_paran">Universidade Tecnológica Federal do Paraná</string>
-    <string name="nome_do_aluno_ygor_muller">Nome do Aluno: Ygor Muller</string>
-    <string name="curso_desenvolvimento_java_para_dispositivos_m_veis">Curso: Desenvolvimento JAVA para dispositivos móveis</string>
-    <string name="editar">Editar</string>
-    <string name="excluir">Excluir</string>
-    <string name="e_mail_ygormuller_alunos_utfpr_edu_br">E-mail: ygormuller@alunos.utfpr.edu.br</string>
-    <string name="descri_o_cadastra_e_classifica_cervejas_degustadas_de_acordo_com_o_usu_rio">Descrição: Cadastra e classifica cervejas degustadas de acordo com o usuário.</string>
+    <string name="logo_utfpr_descricao">Logo of UTFPR</string>
+    <string name="Sobre">About</string>
+    <string name="Adicionar">Add</string>
+    <string name="universidade_tecnol_gica_federal_do_paran">Federal University of Technology - PARANÁ</string>
+    <string name="nome_do_aluno_ygor_muller">Student name: Ygor Muller</string>
+    <string name="curso_desenvolvimento_java_para_dispositivos_m_veis">Course: Desenvolvimento JAVA para dispositivos móveis</string>
+    <string name="editar">Edit</string>
+    <string name="excluir">Delete</string>
+    <string name="e_mail_ygormuller_alunos_utfpr_edu_br" translatable="false">E-mail: ygormuller@alunos.utfpr.edu.br</string>
+    <string name="descri_o_cadastra_e_classifica_cervejas_degustadas_de_acordo_com_o_usu_rio">Description: Cadastra e classifica cervejas degustadas de acordo com o usuário.</string>
+    <string name="ordenar">Order</string>
+    <string name="estilo">Style</string>
+    <string name="cadastro_de_cerveja">Beer registration</string>
+    <string name="formulario_limpo_com_sucesso">Form clearead successfully!</string>
+    <string name="o_nome_obrigat_rio">Name is required!</string>
+    <string name="o_estilo_obrigat_rio">Style is required!</string>
+    <string name="o_ibu_obrigat_rio">IBU is required!</string>
+    <string name="o_abv_obrigat_rio">ABV is required!</string>
+    <string name="as_considera_es_s_o_obrigat_rias">Considerations are mandatory!</string>
+    <string name="o_ibu_n_o_pode_ser_negativo">The IBU cannot be negative!</string>
+    <string name="digite_um_n_mero_v_lido_para_o_ibu">Enter a valid number for the IBU!</string>
+    <string name="o_abv_n_o_pode_ser_negativo">The ABV cannot be negative!</string>
+    <string name="digite_um_n_mero_v_lido_para_o_abv">Enter a vallid number for the ABV!</string>
+    <string name="cerveja_cadastrada">Regisered beer:</string>
+    <string name="selecione_a_nacionalidade">Select nationality!</string>
 
 </resources>

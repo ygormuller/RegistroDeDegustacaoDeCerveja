@@ -34,26 +34,6 @@ public class ListaCervejasActivity extends AppCompatActivity {
 
         CervejaAdapter adapter = new CervejaAdapter(this, listaCervejas);
         listViewCervejas.setAdapter(adapter);
-
-//        listViewCervejas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Cerveja cerveja = listaCervejas.get(position);
-//                Toast.makeText(ListaCervejasActivity.this,
-//                        "Cerveja: " + cerveja.getNome() + " - Estilo: " + cerveja.getEstilo(),
-//                        Toast.LENGTH_SHORT).show();
-//            }
-//        });
-
-//        findViewById(R.id.buttonAdicionar).setOnClickListener(v -> {
-//            Intent intent = new Intent(ListaCervejasActivity.this, MainActivity.class);
-//            startActivityForResult(intent, 1); // Código de requisição = 1
-//        });
-//
-//        findViewById(R.id.buttonSobre).setOnClickListener(v -> {
-//            Intent intent = new Intent(ListaCervejasActivity.this, SobreActivity.class);
-//            startActivity(intent);
-//        });
     }
 
     private void carregarDados() {

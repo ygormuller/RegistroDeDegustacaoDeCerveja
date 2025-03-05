@@ -1,10 +1,11 @@
 package br.edu.utfpr.ygormuller.registrodedegustacaodecerveja;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -14,6 +15,8 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("Cadastro de Cerveja");
+            getSupportActionBar().setTitle(R.string.cadastro_de_cerveja);
         }
 
         editTextNome = findViewById(R.id.editTextTextNome);
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             editTextAbv.setText(String.valueOf(cervejaEditar.getAbv()));
             editTextConsideracoes.setText(cervejaEditar.getConsideracoes());
             checkBoxRecomendacao.setChecked(cervejaEditar.isRecomendacao());
-            // Configurar nacionalidade
+
             for (int i = 0; i < radioGroupNacionalidade.getChildCount(); i++) {
                 RadioButton rb = (RadioButton) radioGroupNacionalidade.getChildAt(i);
                 if (rb.getText().toString().equals(cervejaEditar.getNacionalidade())) {
@@ -63,30 +66,26 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 }
             }
-            // Configurar classificação
             int pos = adapter.getPosition(cervejaEditar.getClassificacao());
             spinnerClassificacao.setSelection(pos);
         }
-
-//        findViewById(R.id.buttonLimpar).setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                limparFormulario();
-//            }
-//        });
-//
-//        findViewById(R.id.buttonSalvar).setOnClickListener(v -> salvarFormulario());
-
     }
 
-    // Inflar o menu de opções
+    private void definirIdiomaIngles() {
+        Locale locale = new Locale("en"); // "en" para inglês
+        Locale.setDefault(locale);
+        Resources resources = getResources();
+        Configuration config = resources.getConfiguration();
+        config.setLocale(locale);
+        resources.updateConfiguration(config, resources.getDisplayMetrics());
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
-    // Tratar cliques nos itens do menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
@@ -96,9 +95,9 @@ public class MainActivity extends AppCompatActivity {
         } else if (itemId == R.id.menu_limpar) {
             limparFormulario();
             return true;
-        } else if (itemId == android.R.id.home) { // Botão "Up"
-            setResult(RESULT_CANCELED); // Cancelar a operação
-            finish(); // Retornar à CervejasActivity
+        } else if (itemId == android.R.id.home) {
+            setResult(RESULT_CANCELED);
+            finish();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -113,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         radioGroupNacionalidade.clearCheck();
         checkBoxRecomendacao.setChecked(false);
         spinnerClassificacao.setSelection(0);
-        Toast.makeText(this, "Formulário limpo com sucesso!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.formulario_limpo_com_sucesso, Toast.LENGTH_SHORT).show();
 
     }
 
@@ -126,36 +125,32 @@ public class MainActivity extends AppCompatActivity {
         String consideracoes = editTextConsideracoes.getText().toString();
 
         if (radioGroupNacionalidade.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(this, "Selecione a nacionalidade!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.selecione_a_nacionalidade, Toast.LENGTH_SHORT).show();
             return;
         }
 
-//        int selectedRadioButtonId = radioGroupNacionalidade.getCheckedRadioButtonId();
-//        RadioButton radioButtonSelecionado = findViewById(selectedRadioButtonId);
-//        String nacionalidadeCerveja = radioButtonSelecionado != null ? radioButtonSelecionado.getText().toString() : "";
-
         if (nome.isEmpty()) {
-            editTextNome.setError("O nome é obrigatório!");
+            editTextNome.setError(getString(R.string.o_nome_obrigat_rio));
             return;
         }
         if (estilo.isEmpty()) {
-            editTextEstilo.setError("O estilo é obrigatório!");
+            editTextEstilo.setError(getString(R.string.o_estilo_obrigat_rio));
             return;
         }
         if (ibuStr.isEmpty()) {
-            editTextIbu.setError("O IBU é obrigatório!");
+            editTextIbu.setError(getString(R.string.o_ibu_obrigat_rio));
             return;
         }
         if (abvStr.isEmpty()) {
-            editTextAbv.setError("O ABV é obrigatório!");
+            editTextAbv.setError(getString(R.string.o_abv_obrigat_rio));
             return;
         }
         if (consideracoes.isEmpty()) {
-            editTextConsideracoes.setError("As considerações são obrigatórias!");
+            editTextConsideracoes.setError(getString(R.string.as_considera_es_s_o_obrigat_rias));
             return;
         }
         if (radioGroupNacionalidade.getCheckedRadioButtonId() == -1) {
-            Toast.makeText(this, "Selecione a nacionalidade!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.selecione_a_nacionalidade, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -163,21 +158,21 @@ public class MainActivity extends AppCompatActivity {
         try {
             ibu = Integer.parseInt(ibuStr);
             if (ibu < 0) {
-                editTextIbu.setError("O IBU não pode ser negativo!");
+                editTextIbu.setError(getString(R.string.o_ibu_n_o_pode_ser_negativo));
                 return;
             }
         } catch (NumberFormatException e) {
-            editTextIbu.setError("Digite um número válido para o IBU!");
+            editTextIbu.setError(getString(R.string.digite_um_n_mero_v_lido_para_o_ibu));
             return;
         }
         try {
             abv = Integer.parseInt(abvStr);
             if (abv < 0) {
-                editTextAbv.setError("O ABV não pode ser negativo!");
+                editTextAbv.setError(getString(R.string.o_abv_n_o_pode_ser_negativo));
                 return;
             }
         } catch (NumberFormatException e) {
-            editTextAbv.setError("Digite um número válido para o ABV!");
+            editTextAbv.setError(getString(R.string.digite_um_n_mero_v_lido_para_o_abv));
             return;
         }
 
@@ -211,20 +206,7 @@ public class MainActivity extends AppCompatActivity {
         Intent resultIntent = new Intent();
         resultIntent.putExtra("CERVEJA", cerveja);
         setResult(RESULT_OK, resultIntent);
-        Toast.makeText(this, "Cerveja cadastrada: " + cerveja.getNome(), Toast.LENGTH_SHORT).show();
-        finish(); // Fecha a MainActivity
+        Toast.makeText(this, getString(R.string.cerveja_cadastrada) + cerveja.getNome(), Toast.LENGTH_SHORT).show();
+        finish();
     }
-
-//        String mensagem = "Dados salvos:\n" +
-//                "Nome: " + nome + "\n" +
-//                "Estilo: " + estilo + "\n" +
-//                "IBU: " + ibu + "\n" +
-//                "ABV: " + abv + "\n" +
-//                "Considerações: " + consideracoes + "\n" +
-//                "Nacionalidade da Cerveja: " + nacionalidadeCerveja + "\n" +
-//                "Recomendação: " + (recomendacao ? "Sim" : "Não") + "\n" +
-//                "Classificação: " + classificacao;
-//
-//        Toast.makeText(this, mensagem, Toast.LENGTH_LONG).show();
-//    }
 }

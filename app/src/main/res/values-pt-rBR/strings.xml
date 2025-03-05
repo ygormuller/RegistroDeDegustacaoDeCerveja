@@ -1,0 +1,145 @@
+<resources>
+    <string name="app_name">Registro de Cerveja</string>
+    <string name="nome">Nome da Cerveja</string>
+    <string name="estilo">Estilo</string>
+    <string name="ibu">IBU</string>
+    <string name="abv">ABV</string>
+    <string name="consideracoes">Considerações</string>
+    <string name="nacionalidade_cerveja">Nacionalidade da Cerveja</string>
+    <string name="nacional">Brasil</string>
+    <string name="importada">Outros</string>
+    <string name="recomendacao">Recomendo está cerveja</string>
+    <string name="classificacao">Classificação</string>
+    <string name="limpar">Limpar</string>
+    <string name="salvar">Salvar</string>
+
+    <string-array name="classificacao_array">
+        <item>1 Estrela</item>
+        <item>2 Estrelas</item>
+        <item>3 Estrelas</item>
+        <item>4 Estrelas</item>
+        <item>5 Estrelas</item>
+        <item>6 Estrelas</item>
+        <item>7 Estrelas</item>
+        <item>8 Estrelas</item>
+        <item>9 Estrelas</item>
+        <item>10 Estrelas</item>
+    </string-array>
+
+    <string-array name="cervejas_nome">
+        <!--        <item>Kaiser</item>-->
+        <!--        <item>Brahma</item>-->
+        <!--        <item>Antartica</item>-->
+        <!--        <item>Budweiser</item>-->
+        <!--        <item>Heineken</item>-->
+        <!--        <item>Patagônia</item>-->
+        <!--        <item>Paulaner</item>-->
+        <!--        <item>Erdinger</item>-->
+        <!--        <item>Duvel</item>-->
+        <!--        <item>Schornstein</item>-->
+    </string-array>
+
+    <integer-array name="cervejas_ibu">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+    </integer-array>
+
+    <integer-array name="cervejas_abv">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </integer-array>
+
+    <integer-array name="cervejas_recomendacao">
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>0</item>
+        <item>1</item>
+        <item>1</item>
+        <item>1</item>
+        <item>0</item>
+        <item>1</item>
+    </integer-array>
+
+    <string-array name="cervejas_estilo">
+        <item>Pilsen</item>
+        <item>Lager</item>
+        <item>Bock</item>
+        <item>Weiss</item>
+        <item>IPA</item>
+        <item>Session IPA</item>
+        <item>Pale Ale</item>
+        <item>Red Ale</item>
+        <item>Dunkel</item>
+        <item>Souer</item>
+    </string-array>
+
+    <string-array name="cervejas_nacionalidade">
+        <item>Outros</item>
+        <item>Brasil</item>
+        <item>Outros</item>
+        <item>Brasil</item>
+        <item>Outros</item>
+        <item>Brasil</item>
+        <item>Outros</item>
+        <item>Brasil</item>
+        <item>Outros</item>
+        <item>Brasil</item>
+    </string-array>
+
+    <string-array name="cervejas_consideracoes">
+        <item>Boa</item>
+        <item>Ruim</item>
+        <item>Boa</item>
+        <item>Ruim</item>
+        <item>Boa</item>
+        <item>Ruim</item>
+        <item>Boa</item>
+        <item>Ruim</item>
+        <item>Boa</item>
+        <item>Ruim</item>
+    </string-array>
+
+    <string name="logo_utfpr_descricao">Logo da UTFPR</string>
+    <string name="Sobre">Sobre</string>
+    <string name="Adicionar">Adicionar</string>
+    <string name="universidade_tecnol_gica_federal_do_paran">Universidade Tecnológica Federal do Paraná</string>
+    <string name="nome_do_aluno_ygor_muller">Nome do Aluno: Ygor Muller</string>
+    <string name="curso_desenvolvimento_java_para_dispositivos_m_veis">Curso: Desenvolvimento JAVA para dispositivos móveis</string>
+    <string name="editar">Editar</string>
+    <string name="excluir">Excluir</string>
+    <string name="e_mail_ygormuller_alunos_utfpr_edu_br">E-mail: ygormuller@alunos.utfpr.edu.br</string>
+    <string name="descri_o_cadastra_e_classifica_cervejas_degustadas_de_acordo_com_o_usu_rio">Descrição: Cadastra e classifica cervejas degustadas de acordo com o usuário.</string>
+    <string name="ordenar">Ordenar</string>
+    <string name="cadastro_de_cerveja">Cadastro de Cerveja</string>
+    <string name="formulario_limpo_com_sucesso">Formulario limpo com sucesso!</string>
+    <string name="o_nome_obrigat_rio">O nome é obrigatório!</string>
+    <string name="o_estilo_obrigat_rio">O estilo é obrigatório!</string>
+    <string name="o_ibu_obrigat_rio">O IBU é obrigatório!</string>
+    <string name="o_abv_obrigat_rio">O ABV é obrigatório!</string>
+    <string name="as_considera_es_s_o_obrigat_rias">As considerações são obrigatórias!</string>
+    <string name="o_ibu_n_o_pode_ser_negativo">O IBU não pode ser negativo!</string>
+    <string name="digite_um_n_mero_v_lido_para_o_ibu">Digite um número válido para o IBU!</string>
+    <string name="o_abv_n_o_pode_ser_negativo">O ABV não pode ser negativo!</string>
+    <string name="digite_um_n_mero_v_lido_para_o_abv">Digite um número válido para o ABV!</string>
+    <string name="cerveja_cadastrada">Cerveja cadastrada:</string>
+    <string name="selecione_a_nacionalidade">Selecione a nacionalidade!</string>
+
+</resources>
