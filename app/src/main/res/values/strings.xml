@@ -13,16 +13,16 @@
     <string name="salvar">Save</string>
 
     <string-array name="classificacao_array">
-        <item>1 Estrela</item>
-        <item>2 Estrelas</item>
-        <item>3 Estrelas</item>
-        <item>4 Estrelas</item>
-        <item>5 Estrelas</item>
-        <item>6 Estrelas</item>
-        <item>7 Estrelas</item>
-        <item>8 Estrelas</item>
-        <item>9 Estrelas</item>
-        <item>10 Estrelas</item>
+        <item>1 Star</item>
+        <item>2 Stars</item>
+        <item>3 Stars</item>
+        <item>4 Stars</item>
+        <item>5 Stars</item>
+        <item>6 Stars</item>
+        <item>7 Stars</item>
+        <item>8 Stars</item>
+        <item>9 Stars</item>
+        <item>10 Stars</item>
     </string-array>
 
     <string-array name="cervejas_nome">
@@ -125,7 +125,7 @@
     <string name="editar">Edit</string>
     <string name="excluir">Delete</string>
     <string name="e_mail_ygormuller_alunos_utfpr_edu_br" translatable="false">E-mail: ygormuller@alunos.utfpr.edu.br</string>
-    <string name="descri_o_cadastra_e_classifica_cervejas_degustadas_de_acordo_com_o_usu_rio">Description: Cadastra e classifica cervejas degustadas de acordo com o usuário.</string>
+    <string name="descri_o_cadastra_e_classifica_cervejas_degustadas_de_acordo_com_o_usu_rio">Description: Register and classify tasting beers according to the user.</string>
     <string name="ordenar">Order</string>
     <string name="estilo">Style</string>
     <string name="cadastro_de_cerveja">Beer registration</string>
@@ -141,5 +141,6 @@
     <string name="digite_um_n_mero_v_lido_para_o_abv">Enter a vallid number for the ABV!</string>
     <string name="cerveja_cadastrada">Regisered beer:</string>
     <string name="selecione_a_nacionalidade">Select nationality!</string>
+    <string name="recomendado">Recommended</string>
 
 </resources>

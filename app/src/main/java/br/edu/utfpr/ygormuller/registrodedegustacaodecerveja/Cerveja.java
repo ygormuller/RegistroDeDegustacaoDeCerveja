@@ -91,7 +91,6 @@ public class Cerveja implements Serializable {
 
     @Override
     public String toString() {
-        return nome + " - " + estilo + " (IBU: " + ibu + ", ABV: " + abv + ")" +
-                (recomendacao ? " - Recomendado" : "");
+        return nome + " - " + estilo + " (IBU: " + ibu + ", ABV: " + abv + ")";
     }
 }

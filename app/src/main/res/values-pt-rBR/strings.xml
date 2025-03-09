@@ -141,5 +141,6 @@
     <string name="digite_um_n_mero_v_lido_para_o_abv">Digite um número válido para o ABV!</string>
     <string name="cerveja_cadastrada">Cerveja cadastrada:</string>
     <string name="selecione_a_nacionalidade">Selecione a nacionalidade!</string>
+    <string name="recomendado">Recomendada</string>
 
 </resources>

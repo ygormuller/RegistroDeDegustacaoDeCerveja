@@ -1,6 +1,7 @@
 package br.edu.utfpr.ygormuller.registrodedegustacaodecerveja;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,27 +49,26 @@ public class CervejaAdapter extends BaseAdapter {
         CervejaHolder holder;
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.activity_lista_cervejas, parent, false);
-
+            convertView = LayoutInflater.from(context).inflate(R.layout.list_item_cerveja, parent, false);
             holder = new CervejaHolder();
             holder.textViewNome = convertView.findViewById(R.id.textViewNome);
             holder.textViewEstilo = convertView.findViewById(R.id.textViewEstilo);
             holder.textViewIbu = convertView.findViewById(R.id.textViewIBU);
             holder.textViewAbv = convertView.findViewById(R.id.textViewABV);
             holder.textViewRecomendacao = convertView.findViewById(R.id.textViewRecomendacao);
-
             convertView.setTag(holder);
         } else {
             holder = (CervejaHolder) convertView.getTag();
         }
 
         Cerveja cerveja = cervejas.get(position);
-
         holder.textViewNome.setText(cerveja.getNome());
         holder.textViewEstilo.setText("Estilo: " + cerveja.getEstilo());
         holder.textViewIbu.setText("IBU: " + cerveja.getIbu());
         holder.textViewAbv.setText("ABV: " + cerveja.getAbv() + "%");
-        holder.textViewRecomendacao.setText("Recomendação: " + (cerveja.isRecomendacao() ? "Sim" : "Não"));
+        String recomendacaoTexto = cerveja.isRecomendacao() ? context.getString(R.string.recomendado) : "";
+        holder.textViewRecomendacao.setText(recomendacaoTexto);
+        holder.textViewRecomendacao.setVisibility(View.VISIBLE);
 
         return convertView;
     }

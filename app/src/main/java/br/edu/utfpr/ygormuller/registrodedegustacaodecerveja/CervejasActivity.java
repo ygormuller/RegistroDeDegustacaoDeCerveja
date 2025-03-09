@@ -41,19 +41,14 @@ public class CervejasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_cervejas);
 
-        //setTitle("TAP de Cervejas");
-
         listViewCervejas = findViewById(R.id.listViewCervejas);
         listaCervejas = new ArrayList<>();;
         adapter = new CervejaAdapter(this, listaCervejas);
         listViewCervejas.setAdapter(adapter);
 
-        listViewCervejas.setVisibility(View.GONE);
-
         lerPreferencias();
         popularListaCervejas();
         ordenarLista();
-
         registerForContextMenu(listViewCervejas);
 
         listViewCervejas.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -116,20 +111,20 @@ public class CervejasActivity extends AppCompatActivity {
             Collections.sort(listaCervejas, new Comparator<Cerveja>() {
                 @Override
                 public int compare(Cerveja c1, Cerveja c2) {
-                    return c1.getNome().compareTo(c2.getNome()); // A-Z
+                    return c1.getNome().compareTo(c2.getNome());
                 }
             });
         } else {
             Collections.sort(listaCervejas, new Comparator<Cerveja>() {
                 @Override
                 public int compare(Cerveja c1, Cerveja c2) {
-                    return c2.getNome().compareTo(c1.getNome()); // Z-A
+                    return c2.getNome().compareTo(c1.getNome());
                 }
             });
         }
         adapter.notifyDataSetChanged();
         listViewCervejas.invalidateViews();
-        Log.d("CervejasActivity", "Lista ordenada " + (isOrdenacaoCrescente ? "A-Z" : "Z-A"));
+        listViewCervejas.setVisibility(listaCervejas.isEmpty() ? View.GONE : View.VISIBLE);
     }
 
     private final ActionMode.Callback actionModeCallback = new ActionMode.Callback() {
@@ -154,7 +149,6 @@ public class CervejasActivity extends AppCompatActivity {
                 Intent intent = new Intent(CervejasActivity.this, MainActivity.class);
                 intent.putExtra("CERVEJA_EDITAR", cervejaSelecionada);
                 startActivityForResult(intent, REQUEST_CODE_EDITAR_CERVEJA);
-                //mode.finish(); // Fechar o menu contextual
                 return true;
             } else if (itemId == R.id.menu_excluir) {
                 // Remover a cerveja da lista
@@ -174,47 +168,84 @@ public class CervejasActivity extends AppCompatActivity {
         }
     };
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        Log.d("CervejasActivity", "onActivityResult chamado - requestCode: " + requestCode +
+//                ", resultCode: " + resultCode + ", data: " + (data != null));
+//
+//        if (resultCode == RESULT_OK && data != null) {
+//            Cerveja novaCerveja = (Cerveja) data.getSerializableExtra("CERVEJA");
+//            if (novaCerveja != null) {
+//                if (requestCode == REQUEST_CODE_ADICIONAR_CERVEJA) {
+//                    Log.d("CervejasActivity", "Adicionando nova cerveja: " + novaCerveja.getNome());
+//                    listaCervejas.add(novaCerveja);
+//                    adapter.notifyDataSetChanged();
+//                    listViewCervejas.setVisibility(View.VISIBLE);
+//                } else if (requestCode == REQUEST_CODE_EDITAR_CERVEJA) {
+//                    Log.d("CervejasActivity", "Editando cerveja na posição " + selectedPosition + ": " + novaCerveja.getNome());
+//                    if (selectedPosition >= 0 && selectedPosition < listaCervejas.size()) {
+//                        listaCervejas.set(selectedPosition, novaCerveja);
+//                        Log.d("CervejasActivity", "Cerveja editada: " + listaCervejas.get(selectedPosition).getNome());
+//                        //adapter.notifyDataSetChanged();
+//                        //listViewCervejas.setVisibility(View.VISIBLE);
+//                    } else {
+//                        Log.e("CervejasActivity", "Posição inválida para edição: " + selectedPosition);
+//                    }
+//                    if (actionMode != null) {
+//                        actionMode.finish();
+//                        actionMode = null;
+//                    }
+//                }
+//            } else {
+//                Log.e("CervejasActivity", "Cerveja é null!");
+//            }
+//        } else {
+//            Log.w("CervejasActivity", "Condição não atendida - requestCode: " + requestCode +
+//                    ", resultCode: " + resultCode);
+//            if (requestCode == REQUEST_CODE_EDITAR_CERVEJA && actionMode != null) {
+//                selectedPosition = -1;
+//            }
+//        }
+//    }
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
 
-        Log.d("CervejasActivity", "onActivityResult chamado - requestCode: " + requestCode +
-                ", resultCode: " + resultCode + ", data: " + (data != null));
-
-        if (resultCode == RESULT_OK && data != null) {
-            Cerveja novaCerveja = (Cerveja) data.getSerializableExtra("CERVEJA");
-            if (novaCerveja != null) {
-                if (requestCode == REQUEST_CODE_ADICIONAR_CERVEJA) {
-                    Log.d("CervejasActivity", "Adicionando nova cerveja: " + novaCerveja.getNome());
-                    listaCervejas.add(novaCerveja);
-                    adapter.notifyDataSetChanged();
-                    listViewCervejas.setVisibility(View.VISIBLE);
-                } else if (requestCode == REQUEST_CODE_EDITAR_CERVEJA) {
-                    Log.d("CervejasActivity", "Editando cerveja na posição " + selectedPosition + ": " + novaCerveja.getNome());
-                    if (selectedPosition >= 0 && selectedPosition < listaCervejas.size()) {
-                        listaCervejas.set(selectedPosition, novaCerveja);
-                        Log.d("CervejasActivity", "Cerveja editada: " + listaCervejas.get(selectedPosition).getNome());
-                        //adapter.notifyDataSetChanged();
-                        //listViewCervejas.setVisibility(View.VISIBLE);
-                    } else {
-                        Log.e("CervejasActivity", "Posição inválida para edição: " + selectedPosition);
-                    }
-                    if (actionMode != null) {
-                        actionMode.finish();
-                        actionMode = null;
-                    }
+    if (resultCode == RESULT_OK && data != null) {
+        Cerveja novaCerveja = (Cerveja) data.getSerializableExtra("CERVEJA");
+        if (novaCerveja != null) {
+            if (requestCode == REQUEST_CODE_ADICIONAR_CERVEJA) {
+                listaCervejas.add(novaCerveja);
+            } else if (requestCode == REQUEST_CODE_EDITAR_CERVEJA) {
+                Log.d("CervejasActivity", "Editando cerveja na posição " + selectedPosition + ": " +
+                        novaCerveja.getNome() + ", Recomendado: " + novaCerveja.isRecomendacao());
+                if (selectedPosition >= 0 && selectedPosition < listaCervejas.size()) {
+                    listaCervejas.set(selectedPosition, novaCerveja);
+                } else {
+                    Log.e("CervejasActivity", "Posição inválida para edição: " + selectedPosition);
                 }
-            } else {
-                Log.e("CervejasActivity", "Cerveja é null!");
             }
+            ordenarLista();
+            listViewCervejas.setAdapter(adapter);
+            listViewCervejas.setVisibility(View.VISIBLE);
         } else {
-            Log.w("CervejasActivity", "Condição não atendida - requestCode: " + requestCode +
-                    ", resultCode: " + resultCode);
-            if (requestCode == REQUEST_CODE_EDITAR_CERVEJA && actionMode != null) {
-                selectedPosition = -1;
-            }
+            Log.e("CervejasActivity", "Cerveja retornada é null!");
         }
+    } else {
+        Log.w("CervejasActivity", "Condição não atendida - requestCode: " + requestCode +
+                ", resultCode: " + resultCode);
     }
+
+    if (actionMode != null) {
+        actionMode.finish();
+        actionMode = null;
+    }
+    if (requestCode == REQUEST_CODE_EDITAR_CERVEJA) {
+        selectedPosition = -1;
+    }
+}
 
     private void popularListaCervejas(){
 

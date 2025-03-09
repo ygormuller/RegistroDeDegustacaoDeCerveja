@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void definirIdiomaIngles() {
-        Locale locale = new Locale("en"); // "en" para inglês
+        Locale locale = new Locale("en");
         Locale.setDefault(locale);
         Resources resources = getResources();
         Configuration config = resources.getConfiguration();
