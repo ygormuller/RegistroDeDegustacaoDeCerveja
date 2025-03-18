@@ -142,5 +142,9 @@
     <string name="cerveja_cadastrada">Cerveja cadastrada:</string>
     <string name="selecione_a_nacionalidade">Selecione a nacionalidade!</string>
     <string name="recomendado">Recomendada</string>
+    <string name="deseja_apagar">Deseja apagar a cerveja \'%1$s\'?</string>
+    <string name="confirmacao">Confirmação</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
 
 </resources>

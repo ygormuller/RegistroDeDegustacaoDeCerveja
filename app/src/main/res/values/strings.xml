@@ -142,5 +142,9 @@
     <string name="cerveja_cadastrada">Regisered beer:</string>
     <string name="selecione_a_nacionalidade">Select nationality!</string>
     <string name="recomendado">Recommended</string>
+    <string name="deseja_apagar">Do you want to delete the beer \'%1$s\'?</string>
+    <string name="confirmacao">Confirmation</string>
+    <string name="sim">Yes</string>
+    <string name="nao">No</string>
 
 </resources>
