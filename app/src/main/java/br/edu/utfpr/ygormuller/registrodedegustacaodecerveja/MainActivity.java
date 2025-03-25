@@ -18,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
+import br.edu.utfpr.ygormuller.registrodedegustacaodecerveja.modelo.Cerveja;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText editTextNome, editTextEstilo, editTextIbu, editTextAbv, editTextConsideracoes;

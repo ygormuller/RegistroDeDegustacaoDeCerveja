@@ -1,4 +1,4 @@
-package br.edu.utfpr.ygormuller.registrodedegustacaodecerveja;
+package br.edu.utfpr.ygormuller.registrodedegustacaodecerveja.modelo;
 
 public enum Recomendacao {
     Sim, // ordinal 0

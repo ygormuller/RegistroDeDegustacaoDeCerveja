@@ -1,17 +1,15 @@
 package br.edu.utfpr.ygormuller.registrodedegustacaodecerveja;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import br.edu.utfpr.ygormuller.registrodedegustacaodecerveja.modelo.Cerveja;
 
 public class ListaCervejasActivity extends AppCompatActivity {
 

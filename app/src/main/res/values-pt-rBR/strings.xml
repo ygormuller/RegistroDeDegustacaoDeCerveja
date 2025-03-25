@@ -9,21 +9,21 @@
     <string name="nacional">Brasil</string>
     <string name="importada">Outros</string>
     <string name="recomendacao">Recomendo está cerveja</string>
-    <string name="classificacao">Classificação</string>
+    <string name="classificacao">Nota</string>
     <string name="limpar">Limpar</string>
     <string name="salvar">Salvar</string>
 
     <string-array name="classificacao_array">
-        <item>1 Estrela</item>
-        <item>2 Estrelas</item>
-        <item>3 Estrelas</item>
-        <item>4 Estrelas</item>
-        <item>5 Estrelas</item>
-        <item>6 Estrelas</item>
-        <item>7 Estrelas</item>
-        <item>8 Estrelas</item>
-        <item>9 Estrelas</item>
-        <item>10 Estrelas</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
     </string-array>
 
     <string-array name="cervejas_nome">

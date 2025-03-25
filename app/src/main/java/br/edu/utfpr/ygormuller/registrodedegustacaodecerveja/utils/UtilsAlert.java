@@ -1,9 +1,11 @@
-package br.edu.utfpr.ygormuller.registrodedegustacaodecerveja;
+package br.edu.utfpr.ygormuller.registrodedegustacaodecerveja.utils;
 
 import android.content.Context;
 import android.content.DialogInterface;
 
 import androidx.appcompat.app.AlertDialog;
+
+import br.edu.utfpr.ygormuller.registrodedegustacaodecerveja.R;
 
 public class UtilsAlert {
     public static void confirmarAcao(Context context, String mensagem,

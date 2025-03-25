@@ -15,13 +15,14 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+
+import br.edu.utfpr.ygormuller.registrodedegustacaodecerveja.modelo.CervejaDatabase;
+import br.edu.utfpr.ygormuller.registrodedegustacaodecerveja.modelo.Cerveja;
+import br.edu.utfpr.ygormuller.registrodedegustacaodecerveja.modelo.CervejaDao;
+import br.edu.utfpr.ygormuller.registrodedegustacaodecerveja.utils.UtilsAlert;
 
 public class CervejasActivity extends AppCompatActivity {
 
@@ -38,21 +39,28 @@ public class CervejasActivity extends AppCompatActivity {
     public static final String ARQUIVO_PREFERENCIAS = "CervejasPrefs";
     public static final String KEY_ORDENACAO = "ordenacaoCrescente";
 
+    private CervejaDatabase db;
+    private CervejaDao cervejaDao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_cervejas);
 
         listViewCervejas = findViewById(R.id.listViewCervejas);
-        listaCervejas = new ArrayList<>(); // Inicializa a lista vazia
+        listaCervejas = new ArrayList<>();
         adapter = new CervejaAdapter(this, listaCervejas);
         listViewCervejas.setAdapter(adapter);
 
-        lerPreferencias(); // Carrega preferências e lista salva, se houver
-        if (listaCervejas.isEmpty()) { // [NOVO] Só popula com dados iniciais se a lista estiver vazia
+        db = CervejaDatabase.getInstance(this);
+        cervejaDao = db.cervejaDao();
+
+        lerPreferencias();
+        carregarCervejas();
+        if (listaCervejas.isEmpty()) {
             popularListaCervejas();
         }
-        ordenarLista(); // Ordena e atualiza a visibilidade
+        ordenarLista();
         registerForContextMenu(listViewCervejas);
 
         listViewCervejas.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
@@ -96,17 +104,7 @@ public class CervejasActivity extends AppCompatActivity {
 
     private void lerPreferencias() {
         SharedPreferences shared = getSharedPreferences(ARQUIVO_PREFERENCIAS, MODE_PRIVATE);
-        isOrdenacaoCrescente = shared.getBoolean(KEY_ORDENACAO, isOrdenacaoCrescente);
-        String json = shared.getString("lista_cervejas", null);
-        if (json != null) { // [ALTERADO] Só sobrescreve se houver dados salvos
-            Gson gson = new Gson();
-            Type type = new TypeToken<List<Cerveja>>() {}.getType();
-            List<Cerveja> listaSalva = gson.fromJson(json, type);
-            if (listaSalva != null) {
-                listaCervejas.clear(); // Limpa a lista atual antes de carregar a salva
-                listaCervejas.addAll(listaSalva);
-            }
-        }
+        isOrdenacaoCrescente = shared.getBoolean(KEY_ORDENACAO, true); // true como padrão
     }
 
     private void salvarOrdenacao(boolean novoValor) {
@@ -114,8 +112,18 @@ public class CervejasActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = shared.edit();
         editor.putBoolean(KEY_ORDENACAO, novoValor);
         salvarListaCervejas();
-        editor.commit();
+        editor.apply();
         isOrdenacaoCrescente = novoValor;
+    }
+
+    private void carregarCervejas() {
+        listaCervejas.clear();
+
+        if (isOrdenacaoCrescente) {
+            listaCervejas.addAll(cervejaDao.queryAllAscending());
+        } else {
+            listaCervejas.addAll(cervejaDao.queryAllDownward());
+        }
     }
 
     private void salvarListaCervejas() {
@@ -128,21 +136,7 @@ public class CervejasActivity extends AppCompatActivity {
     }
 
     private void ordenarLista() {
-        if (isOrdenacaoCrescente) {
-            Collections.sort(listaCervejas, new Comparator<Cerveja>() {
-                @Override
-                public int compare(Cerveja c1, Cerveja c2) {
-                    return c1.getNome().compareTo(c2.getNome());
-                }
-            });
-        } else {
-            Collections.sort(listaCervejas, new Comparator<Cerveja>() {
-                @Override
-                public int compare(Cerveja c1, Cerveja c2) {
-                    return c2.getNome().compareTo(c1.getNome());
-                }
-            });
-        }
+        carregarCervejas();
         adapter.notifyDataSetChanged();
         listViewCervejas.invalidateViews();
         listViewCervejas.setVisibility(listaCervejas.isEmpty() ? View.GONE : View.VISIBLE);
@@ -190,6 +184,7 @@ public class CervejasActivity extends AppCompatActivity {
         String mensagem = getString(R.string.deseja_apagar, cerveja.getNome());
 
         DialogInterface.OnClickListener listenerSim = (dialog, which) -> {
+            cervejaDao.delete(cerveja);
             listaCervejas.remove(selectedPosition);
             adapter.notifyDataSetChanged();
             ordenarLista();
@@ -208,20 +203,22 @@ public class CervejasActivity extends AppCompatActivity {
             Cerveja novaCerveja = (Cerveja) data.getSerializableExtra("CERVEJA");
             if (novaCerveja != null) {
                 if (requestCode == REQUEST_CODE_ADICIONAR_CERVEJA) {
+                    cervejaDao.insert(novaCerveja);
                     listaCervejas.add(novaCerveja);
                 } else if (requestCode == REQUEST_CODE_EDITAR_CERVEJA) {
                     Log.d("CervejasActivity", "Editando cerveja na posição " + selectedPosition + ": " +
                             novaCerveja.getNome() + ", Recomendado: " + novaCerveja.isRecomendacao());
                     if (selectedPosition >= 0 && selectedPosition < listaCervejas.size()) {
+                        novaCerveja.setId(listaCervejas.get(selectedPosition).getId());
+                        cervejaDao.update(novaCerveja); // [NOVO] Atualiza no banco Room
                         listaCervejas.set(selectedPosition, novaCerveja);
                     } else {
                         Log.e("CervejasActivity", "Posição inválida para edição: " + selectedPosition);
                     }
                 }
                 ordenarLista();
-                listViewCervejas.setAdapter(adapter); // [MANTIDO] Garante que o adaptador seja reaplicado
+                listViewCervejas.setAdapter(adapter);
                 listViewCervejas.setVisibility(View.VISIBLE);
-                salvarListaCervejas();
             } else {
                 Log.e("CervejasActivity", "Cerveja retornada é null!");
             }
@@ -264,9 +261,10 @@ public class CervejasActivity extends AppCompatActivity {
                     cervejas_consideracoes[cont],
                     cervejas_classificacao[cont]
             );
+            cervejaDao.insert(cerveja);
             listaCervejas.add(cerveja);
         }
 
-        adapter.notifyDataSetChanged(); // [MANTIDO] Garante que o adaptador reflita os dados iniciais
+        adapter.notifyDataSetChanged();
     }
 }

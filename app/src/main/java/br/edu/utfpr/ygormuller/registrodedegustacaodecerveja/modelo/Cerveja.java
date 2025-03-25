@@ -1,8 +1,21 @@
-package br.edu.utfpr.ygormuller.registrodedegustacaodecerveja;
+package br.edu.utfpr.ygormuller.registrodedegustacaodecerveja.modelo;
+
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.ColumnInfo;
+import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
+import java.util.Comparator;
 
+@Entity(tableName = "cervejas")
 public class Cerveja implements Serializable {
+
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    @NonNull
+    @ColumnInfo(index = true)
     private String nome;
     private String estilo;
     private int ibu;
@@ -14,6 +27,7 @@ public class Cerveja implements Serializable {
 
     public Cerveja(String nome, String estilo, int ibu, int abv, boolean recomendacao,
                    String nacionalidade, String consideracoes, String classificacao) {
+        this.id = id;
         this.nome = nome;
         this.estilo = estilo;
         this.ibu = ibu;
@@ -25,6 +39,12 @@ public class Cerveja implements Serializable {
     }
 
     // Getters e Setters
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getNome() {
         return nome;
     }
@@ -91,6 +111,10 @@ public class Cerveja implements Serializable {
 
     @Override
     public String toString() {
-        return nome + " - " + estilo + " (IBU: " + ibu + ", ABV: " + abv + ")";
+        return nome + " - " + estilo + " (IBU: " + ibu + ", ABV: " + abv + ")" +
+                "\nNacionalidade: " + nacionalidade +
+                "\nClassificação: " + classificacao +
+                "\nRecomendação: " + (recomendacao ? "Sim" : "Não") +
+                "\nConsiderações: " + consideracoes;
     }
 }
